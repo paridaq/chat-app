@@ -19,7 +19,7 @@ function ChatSpace(){
     const[messages,setMessages]= useState<message[]>([])
 
     //if socket is defined outside the space of the chAT SPACE COMPONENT IT may not work
-    const socketRef = useRef(io('http://localhost:8080/', { autoConnect: false }));
+    const socketRef = useRef(io('https://chat-app-9xhz.vercel.app/', { autoConnect: false }));
        
     console.log(messages)
 const username = localStorage.getItem('user-name') || "Anonymous";
@@ -39,12 +39,14 @@ const username = localStorage.getItem('user-name') || "Anonymous";
         socket.emit('joined', { username });
 
         socket.on('welcome', (data) => {
-            setMessages((prevMessages) => [...prevMessages, {username:data.user || "pad",text:data.message}]);
+            // setMessages((prevMessages) => [...prevMessages, {username:data.user || "pad",text:data.message}]);
+            setMessages([{username:data.user || "hey", text:data.message}])
             console.log(data.user, data.message);
         });
 
         socket.on('userjoined', (data) => {
-            setMessages((prevMessages) => [...prevMessages, {username:data.user ||"pad",text:data.message}]);
+            // setMessages((prevMessages) => [...prevMessages, {username:data.user ||"pad",text:data.message}]);
+            setMessages([{username:data.user || "admin", text:data.message}])
             console.log(data.user, data.message);
         });
 
@@ -65,7 +67,7 @@ const username = localStorage.getItem('user-name') || "Anonymous";
             return
         }
     socketRef.current.emit('message', { message, id });
-    setMessages((prevMessages) => [...prevMessages, { username: username as string, text: message }]);
+    // setMessages((prevMessages) => [...prevMessages, { username: username as string, text: message }]);
         setMessage('');
     };
     
@@ -109,7 +111,7 @@ const username = localStorage.getItem('user-name') || "Anonymous";
     
         return (
             <>
-                <h1>Hi {username}</h1>
+                <h1> {username}</h1>
                 <div
                     style={{
                         display: "flex",
