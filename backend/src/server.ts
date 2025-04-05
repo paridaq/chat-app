@@ -18,7 +18,7 @@ server.listen(port, () => {
 
 const io = new Server(server, {
     cors: {
-        origin: 'https://chat-app-ten-eta-53.vercel.app/', // Replace with your frontend's URL
+        origin: 'https://chat-app-ten-eta-53.vercel.app', // Replace when deploy
         methods: ['GET', 'POST'],
     },
 });
