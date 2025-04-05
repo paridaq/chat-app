@@ -15,6 +15,7 @@ app.get('/', (req: Request, res: Response) => {
 server.listen(port, () => {
     console.log('server is listening on port 8080');
 });
+module.exports= server
 
 const io = new Server(server, {
     cors: {
