@@ -19,7 +19,7 @@ function ChatSpace(){
     const[messages,setMessages]= useState<message[]>([])
 
     //if socket is defined outside the space of the chAT SPACE COMPONENT IT may not work
-    const socketRef = useRef(io('https://chat-app-9xhz.vercel.app/', { autoConnect: false }));
+    const socketRef = useRef(io('http://localhost:8080/', { autoConnect: false }));
        
     console.log(messages)
 const username = localStorage.getItem('user-name') || "Anonymous";

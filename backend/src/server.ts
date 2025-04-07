@@ -12,14 +12,14 @@ const server = http.createServer(app);
 app.get('/', (req: Request, res: Response) => {
     res.send(`Hi Hi`);
 });
-// server.listen(port, () => {
-//     console.log('server is listening on port 8080');
-// });
+server.listen(port, () => {
+    console.log('server is listening on port 8080');
+});
 module.exports= server
 
 const io = new Server(server, {
     cors: {
-        origin: 'https://chat-app-ten-eta-53.vercel.app', // Replace when deploy
+        origin: 'http://localhost:5173', // Replace when deploy
         methods: ['GET', 'POST'],
     },
 });
